@@ -1,8 +1,10 @@
 
-resource "null_resource" "compute-gw-p9" {
+resource "null_resource" "compute-p9" {
+
+  count = "${var.compute-amd64_count}"
 
   connection {
-    host = "${packet_device.compute-gw.access_public_ipv4}"
+    host = "${element(packet_device.compute-amd64.*.access_public_ipv4, count.index)}"
     private_key = "${file("${var.cloud_ssh_key_path}")}"
   }
 
@@ -16,11 +18,11 @@ resource "null_resource" "compute-gw-p9" {
     destination = "platform9-install.sh"
   }
 
-#  provisioner "remote-exec" {
-#    inline = [
-#      "bash platform9-setup.sh > platform9-setup.out",
-#      "bash platform9-install.sh > platform9-install.out",
-#    ]
-#  }
+  provisioner "remote-exec" {
+    inline = [
+      "bash platform9-setup.sh > platform9-setup.out",
+      "bash platform9-install.sh --no-proxy --ntpd > platform9-install.out",
+    ]
+  }
 
 }

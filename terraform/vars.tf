@@ -12,16 +12,6 @@ variable "packet_facility" {
   default = "ewr1"
 }
 
-variable "compute-gw_type" {
-  description = "Instance type of OpenStack compute nodes with network gateway"
-  default = "baremetal_2"
-}
-
-variable "compute-gw_count" {
-  description = "Number of OpenStack compute nodes with network gateway to deploy"
-  default = "1"
-}
-
 variable "compute-amd64_type" {
   description = "Instance type of OpenStack AMD64 compute nodes"
   default = "baremetal_2"
