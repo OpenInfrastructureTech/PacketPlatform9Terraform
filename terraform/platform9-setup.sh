@@ -25,3 +25,5 @@ systemctl start openvswitch-switch
 
 ovs-vsctl add-br br-pf9
 
+# so that hostname -f has the real hostname and not localhost otherwise pf9 displays host as localhost
+sed -i 's/\(127.0.0.1\s*\)\(localhost\s*\)\(.*\)/\1 \3 \2/' /etc/hosts
