@@ -25,4 +25,16 @@ resource "null_resource" "compute-p9" {
     ]
   }
 
+  provisioner "file" {
+    source      = "PrometheusNodeExporterSetup.sh"
+    destination = "PrometheusNodeExporterSetup.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "bash PrometheusNodeExporterSetup.sh > PrometheusNodeExporterSetup.out",
+    ]
+  }
+
 }
+
