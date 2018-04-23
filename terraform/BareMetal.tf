@@ -19,5 +19,5 @@ resource "packet_device" "compute-amd64" {
   project_id    = "${var.packet_project_id}"
   billing_cycle = "hourly"
 
-  public_ipv4_subnet_size  = "29"
+#  public_ipv4_subnet_size  = "29"
 }
