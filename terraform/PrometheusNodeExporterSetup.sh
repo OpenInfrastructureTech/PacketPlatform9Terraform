@@ -8,8 +8,8 @@ sudo apt-get -y install docker-ce
 
 
 # startup monitor data extractor watching the underlying hardware on private interface to limit unauthorized access
-PRIVATE_IP=`ip -4 address show label bond0:0  | grep inet | awk '{print $2}' | cut -d/ -f1`
-docker run -d -p $PRIVATE_IP:9100:9100 --restart unless-stopped \
+PUBLIC_IP=`ip -4 address show label bond0  | grep inet | awk '{print $2}' | cut -d/ -f1`
+docker run -d -p $PUBLIC_IP:9100:9100 --restart unless-stopped \
 -v "/proc:/host/proc" \
 -v "/sys:/host/sys" \
 -v "/:/rootfs" \
