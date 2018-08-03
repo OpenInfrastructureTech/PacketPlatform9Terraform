@@ -19,7 +19,7 @@ variable "compute-amd64_type" {
 
 variable "compute-amd64_count" {
   description = "Number of OpenStack AMD64 compute nodes to deploy"
-  default = "10"
+  default = "1"
 }
 
 variable "compute-arm_type" {

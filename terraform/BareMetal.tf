@@ -1,7 +1,3 @@
-provider "packet" {
-  auth_token = "${var.packet_auth_token}"
-}
-
 resource "packet_device" "compute-amd64" {
   hostname = "${format("compute-amd64-%02d", count.index)}"
 
